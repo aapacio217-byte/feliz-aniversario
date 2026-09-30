@@ -1,0 +1,311 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Para mi princesa ❤️</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ff758c, #ff7eb3, #ffb6c1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Pantalla inicial */
+        .pantalla {
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(135deg, #ff4f81, #ff8fab);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+            animation: desaparecer 2s ease forwards;
+            animation-delay: 3s;
+        }
+
+        .mensaje-inicial {
+            color: white;
+            text-align: center;
+            animation: aparecer 1.5s ease;
+        }
+
+        .mensaje-inicial .mini-corazon {
+            font-size: 90px;
+            animation: latido 1s infinite;
+        }
+
+        .mensaje-inicial h2 {
+            font-size: 28px;
+            margin-top: 15px;
+        }
+
+        /* Contenedor principal */
+        .contenedor {
+            position: relative;
+            width: 100%;
+            max-width: 700px;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Corazón */
+        .corazon {
+            position: relative;
+            width: 360px;
+            height: 360px;
+            background: #e91e63;
+            transform: rotate(-45deg);
+            animation: aparecerCorazon 2s ease, latido 1.8s infinite 2s;
+            box-shadow: 0 0 50px rgba(255, 0, 100, 0.6);
+        }
+
+        .corazon::before,
+        .corazon::after {
+            content: "";
+            position: absolute;
+            width: 360px;
+            height: 360px;
+            background: #e91e63;
+            border-radius: 50%;
+        }
+
+        .corazon::before {
+            top: -180px;
+            left: 0;
+        }
+
+        .corazon::after {
+            left: 180px;
+            top: 0;
+        }
+
+        /* Contenido dentro del corazón */
+        .contenido {
+            position: absolute;
+            z-index: 5;
+            width: 280px;
+            height: 280px;
+
+            top: 40px;
+            left: 40px;
+
+            transform: rotate(45deg);
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+            color: white;
+        }
+
+        .foto {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+
+            border: 5px solid white;
+            box-shadow: 0 0 20px rgba(255,255,255,0.8);
+
+            margin-bottom: 12px;
+        }
+
+        .contenido h1 {
+            font-size: 24px;
+            margin-bottom: 8px;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+
+        .contenido p {
+            font-size: 14px;
+            line-height: 1.4;
+            max-width: 230px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        /* Corazones flotando */
+        .flotante {
+            position: absolute;
+            color: rgba(255,255,255,0.8);
+            font-size: 25px;
+            animation: flotar 7s linear infinite;
+            bottom: -50px;
+        }
+
+        .f1 { left: 10%; animation-delay: 0s; }
+        .f2 { left: 25%; animation-delay: 2s; }
+        .f3 { left: 45%; animation-delay: 4s; }
+        .f4 { left: 65%; animation-delay: 1s; }
+        .f5 { left: 85%; animation-delay: 3s; }
+
+        /* Animaciones */
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes desaparecer {
+            to {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+
+        @keyframes aparecerCorazon {
+            from {
+                opacity: 0;
+                transform: rotate(-45deg) scale(0);
+            }
+            to {
+                opacity: 1;
+                transform: rotate(-45deg) scale(1);
+            }
+        }
+
+        @keyframes latido {
+            0%, 100% {
+                transform: rotate(-45deg) scale(1);
+            }
+
+            50% {
+                transform: rotate(-45deg) scale(1.08);
+            }
+        }
+
+        @keyframes flotar {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Celulares */
+        @media (max-width: 500px) {
+
+            .corazon {
+                width: 280px;
+                height: 280px;
+            }
+
+            .corazon::before,
+            .corazon::after {
+                width: 280px;
+                height: 280px;
+            }
+
+            .corazon::before {
+                top: -140px;
+            }
+
+            .corazon::after {
+                left: 140px;
+            }
+
+            .contenido {
+                width: 220px;
+                height: 220px;
+                top: 30px;
+                left: 30px;
+            }
+
+            .foto {
+                width: 90px;
+                height: 90px;
+            }
+
+            .contenido h1 {
+                font-size: 19px;
+            }
+
+            .contenido p {
+                font-size: 12px;
+                max-width: 190px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Pantalla de entrada -->
+    <div class="pantalla">
+        <div class="mensaje-inicial">
+            <div class="mini-corazon">❤️</div>
+            <h2>Esto es para ti...</h2>
+        </div>
+    </div>
+
+    <!-- Corazones del fondo -->
+    <span class="flotante f1">❤️</span>
+    <span class="flotante f2">💕</span>
+    <span class="flotante f3">💗</span>
+    <span class="flotante f4">💖</span>
+    <span class="flotante f5">❤️</span>
+
+    <!-- Corazón principal -->
+    <main class="contenedor">
+
+        <div class="corazon">
+
+            <div class="contenido">
+
+                <!-- CAMBIA ESTA FOTO -->
+                <img 
+                    src="image 3.jpg" 
+                    alt="Nuestra foto" 
+                    class="foto"
+                >
+
+                <!-- CAMBIA ESTE TEXTO -->
+                <h1>Mi princesa ❤️</h1>
+
+                <p>
+                    Gracias por llegar a mi vida.
+                    no sabes cuan importante te has vuelto para mi
+                    eres lo que mas amo en este mundo nunca te dejare amor 
+                    te seguire amando hasta llegar a viejitos feliz aniversario amor
+                    Te amo muchísisisisisisimooooooo. 💕
+                </p>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</body>
+</html>
+```
